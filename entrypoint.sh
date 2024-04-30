@@ -44,7 +44,7 @@ tar -C \$workdir -xjv;
 
 log 'Launching docker compose...';
 cd \$workdir;
-cd \"$DOCKER_COMPOSE_FILE_PATH\"
+cd $DOCKER_COMPOSE_FILE_PATH;
 
 if $DOCKER_COMPOSE_DOWN
 then
