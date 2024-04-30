@@ -37,6 +37,8 @@ inputs:
     description: Docker Hub username used for login.
   dockerhub_password:
     description: Docker Hub password used for login.
+  docker_compose_file_path:
+    description: Path of docker-compose.yaml
 runs:
   using: docker
   image: Dockerfile
