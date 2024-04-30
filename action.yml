@@ -55,3 +55,4 @@ runs:
     DOCKER_COMPOSE_DOWN: ${{ inputs.docker_compose_down }}
     DOCKERHUB_USERNAME: ${{ inputs.dockerhub_username }}
     DOCKERHUB_PASSWORD: ${{ inputs.dockerhub_password }}
+    DOCKER_COMPOSE_FILE_PATH: ${{ inputs.docker_compose_file_path }}
