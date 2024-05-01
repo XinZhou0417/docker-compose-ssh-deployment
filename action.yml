@@ -38,7 +38,8 @@ inputs:
   dockerhub_password:
     description: Docker Hub password used for login.
   docker_compose_file_path:
-    description: Path of docker-compose.yaml
+    description: Path of docker-compose.yaml, use relative path to the root directory of your project (start with "./")
+    default: '.'
 runs:
   using: docker
   image: Dockerfile
