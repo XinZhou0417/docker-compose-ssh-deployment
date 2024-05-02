@@ -55,7 +55,7 @@ fi
 if [ -n \"$DOCKERHUB_USERNAME\" ] && [ -n \"$DOCKERHUB_PASSWORD\" ]
 then
   log 'Executing docker login...';
-  docker login -u \"$DOCKERHUB_USERNAME\" --password-stdin \"$DOCKERHUB_PASSWORD\"
+  docker login -u \"$DOCKERHUB_USERNAME\" -p \"$DOCKERHUB_PASSWORD\"
 fi
 
 log 'Executing docker compose pull...';
