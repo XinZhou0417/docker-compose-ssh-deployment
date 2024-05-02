@@ -24,6 +24,7 @@ unknown docker-images. It is entirely built from Dockerfile on top of
 * `docker_compose_down` - Execute docker-compose down before docker-compose up.
 * `dockerhub_username` - Username for dockerhub login.
 * `dockerhub_password` - Password for dockerhub login.
+* `docker_compose_file_path` - Relative path to the docker-compose.yml file, starts with './'.
 
 # Example usage
 
