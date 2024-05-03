@@ -67,6 +67,12 @@ fi
 log 'Executing docker compose pull...';
 docker-compose -f \"$DOCKER_COMPOSE_FILENAME\" -p \"$DOCKER_COMPOSE_PREFIX\" pull
 
+dangling=$(docker images --filter "dangling=true" -q --no-trunc)
+if [ ! -z $dangling ]; then
+  log 'Cleaning dangling docker images...';
+  docker rmi $dangling;
+fi
+
 if $NO_CACHE
 then
   docker-compose -f \"$DOCKER_COMPOSE_FILENAME\" -p \"$DOCKER_COMPOSE_PREFIX\" build --no-cache
