@@ -24,26 +24,32 @@ ssh-add <(echo "$SSH_PRIVATE_KEY")
 
 remote_command="set -e;
 
-workdir=\"\$HOME/workspace\";
+srcdir=\"\$HOME/workspace/$PROJECT_NAME/src\";
+storedir=\"\$HOME/workspace/$PROJECT_NAME/store\";
 
 log() {
     echo '>> [remote]' \$@ ;
 };
 
-if [ -d \$workdir ]
+if [ -d \$srcdir ]
 then
-  log 'Deleting workspace directory...';
-  rm -rf \$workdir;
+  log 'Deleting source directory...';
+  rm -rf \$srcdir;
 fi
 
-log 'Creating workspace directory...';
-mkdir \$workdir;
+if [ ! -d \$storedir ]; then
+  log 'Creating storage directory...';
+  mkdir \$storedir;
+fi
 
-log 'Unpacking workspace...';
-tar -C \$workdir -xjv;
+log 'Creating source directory...';
+mkdir \$srcdir;
+
+log 'Unpacking source...';
+tar -C \$srcdir -xjv;
 
 log 'Launching docker compose...';
-cd \$workdir;
+cd \$srcdir;
 cd $DOCKER_COMPOSE_FILE_PATH;
 
 if $DOCKER_COMPOSE_DOWN
