@@ -39,11 +39,11 @@ fi
 
 if [ ! -d \$storedir ]; then
   log 'Creating storage directory...';
-  mkdir \$storedir;
+  mkdir -p \$storedir;
 fi
 
 log 'Creating source directory...';
-mkdir \$srcdir;
+mkdir -p \$srcdir;
 
 log 'Unpacking source...';
 tar -C \$srcdir -xjv;
