@@ -1,4 +1,4 @@
-#!/usb/bin/env bash
+#!/usr/bin/env bash
 set -e
 
 log() {
@@ -64,8 +64,10 @@ then
   docker login -u \"$DOCKERHUB_USERNAME\" -p \"$DOCKERHUB_PASSWORD\"
 fi
 
-log 'Cleaning dangling docker images...';
-docker rmi $(docker images --filter "dangling=true" -q --no-trunc);
+dangling=$(docker images --filter "dangling=true" -q --no-trunc)
+if [ ! -z $dangling ]; then
+  log 'Cleaning dangling docker images...';
+  docker rmi $dangling;
 
 log 'Executing docker compose pull...';
 docker-compose -f \"$DOCKER_COMPOSE_FILENAME\" -p \"$DOCKER_COMPOSE_PREFIX\" pull
