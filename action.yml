@@ -40,6 +40,9 @@ inputs:
   docker_compose_file_path:
     description: Path of docker-compose.yaml, use relative path to the root directory of your project (start with "./")
     default: '.'
+  project_name:
+    description: Project name, used to create project directory
+    default: 'tmp_project'
 runs:
   using: docker
   image: Dockerfile
@@ -57,3 +60,4 @@ runs:
     DOCKERHUB_USERNAME: ${{ inputs.dockerhub_username }}
     DOCKERHUB_PASSWORD: ${{ inputs.dockerhub_password }}
     DOCKER_COMPOSE_FILE_PATH: ${{ inputs.docker_compose_file_path }}
+    PROJECT_NAME: ${{ inputs.project_name }}
