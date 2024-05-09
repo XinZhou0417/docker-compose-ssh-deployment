@@ -58,8 +58,9 @@ then
   docker login -u \"$DOCKERHUB_USERNAME\" -p \"$DOCKERHUB_PASSWORD\"
 fi
 
-log 'Pruning unused containers/images';
-docker system prune;
+log 'Pruning unused docker objects...';
+docker system prune -f;
+docker volume prune -f;
 
 log 'Executing docker compose pull...';
 docker-compose -f \"$DOCKER_COMPOSE_FILENAME\" -p \"$DOCKER_COMPOSE_PREFIX\" pull
